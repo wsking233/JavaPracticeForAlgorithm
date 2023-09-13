@@ -9,6 +9,10 @@ package studentapp;
 /**
  *
  * @author xhu
+ * 
+ * @student William Wang
+ * @id 18017970
+ * 
  */
 public class Student {
     
@@ -18,6 +22,6 @@ public class Student {
     
     public String toString()
     {
-        return null;
+        return "Name: "+name + "\nScore: " + score + "\nComments: " + comments;
     }
 }

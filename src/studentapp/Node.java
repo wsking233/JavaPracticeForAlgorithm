@@ -8,12 +8,43 @@ package studentapp;
 /**
  *
  * @author xhu
+ * 
+ * @student William Wang
+ * @id 18017970
  */
 public class Node <E, F extends Comparable> implements Comparable <Node>{
+
+    public E element;   //E type will only be student class in this case
+    public F key;      
+    public Node<E, F> left;
+    public Node<E, F> right;
+
+    public Node(E element, F key) {
+        this.element = element;
+        this.key = key;
+        this.left = null;
+        this.right = null;
+    }
+
+    public Node(E element, F key, Node<E, F> left, Node<E, F> right) {
+        this.element = element;
+        this.key = key;
+        this.left = left;
+        this.right = right;
+    }
 
 
     @Override
     public int compareTo(Node t) {
-        return 0;
+        if (this.key.compareTo(t.key) == 0) {
+            //return 0; if equal
+            return 0;
+        } else if (this.key.compareTo(t.key) > 0) {
+            //return 1; if this > t
+            return 1;
+        } else {
+            //return -1; if this < t
+            return -1;
+        }
     }
 }
