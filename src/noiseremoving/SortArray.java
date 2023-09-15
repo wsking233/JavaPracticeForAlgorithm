@@ -28,10 +28,10 @@ public class SortArray <E extends Comparable>{
         
     }
     
-    private void quickSort()
-    {
+    // private void quickSort()
+    // {
         
-    }
+    // }
     
     private void swap()
     {

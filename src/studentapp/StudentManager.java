@@ -10,6 +10,9 @@ package studentapp;
  * @author xhu
  */
 public class StudentManager<E,F  extends Comparable> {
+
+    public BinaryTree<Student, Float> bTreeScore;
+    public BinaryTree<Student, String> bTreeName;
     
     public void addStudent(float score, String name, String comments)
     {

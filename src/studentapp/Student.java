@@ -18,10 +18,10 @@ public class Student {
     
     public String name;
     public Float score;
-    public String comments;
+    public String comment;
     
     public String toString()
     {
-        return "Name: "+name + "\nScore: " + score + "\nComments: " + comments;
+        return "Name: "+name + "\nScore: " + score + "\nComments: " + comment;
     }
 }

@@ -19,6 +19,13 @@ public class Node <E, F extends Comparable> implements Comparable <Node>{
     public Node<E, F> left;
     public Node<E, F> right;
 
+    public Node() {
+        this.element = null;
+        this.key = null;
+        this.left = null;
+        this.right = null;
+    }
+
     public Node(E element, F key) {
         this.element = element;
         this.key = key;
@@ -33,18 +40,31 @@ public class Node <E, F extends Comparable> implements Comparable <Node>{
         this.right = right;
     }
 
+    public int compareTo(Node t){
 
-    @Override
-    public int compareTo(Node t) {
-        if (this.key.compareTo(t.key) == 0) {
-            //return 0; if equal
-            return 0;
-        } else if (this.key.compareTo(t.key) > 0) {
-            //return 1; if this > t
-            return 1;
-        } else {
-            //return -1; if this < t
-            return -1;
+        if(this.key == null){
+            if(t.key == null){
+                return 0;
+            }else{
+                return -1;
+            }
         }
+        return this.key.compareTo(t.key);
     }
+
+
 }
+
+// @Override
+// public int compareTo(Node t) {
+//     if (this.key.compareTo(t.key) == 0) {
+//         //return 0; if equal
+//         return 0;
+//     } else if (this.key.compareTo(t.key) > 0) {
+//         //return 1; if this > t
+//         return 1;
+//     } else {
+//         //return -1; if this < t
+//         return -1;
+//     }
+// }
