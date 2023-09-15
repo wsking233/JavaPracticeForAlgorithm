@@ -9,19 +9,33 @@ package studentapp;
  *
  * @author xhu
  */
-public class StudentManager<E,F  extends Comparable> {
+public class StudentManager<E,F extends Comparable> {
 
     public BinaryTree<Student, Float> bTreeScore;
     public BinaryTree<Student, String> bTreeName;
-    
+
+    public StudentManager() {
+        this.bTreeScore = new BinaryTree<Student, Float>();
+        this.bTreeName = new BinaryTree<Student, String>();
+    }
+
     public void addStudent(float score, String name, String comments)
     {
-
+        Student student = new Student(score, name, comments);
+        addToTree(student, score);
+        addToTree(student, name);
     }
     
     public void addToTree(Student student, F key)
     {
-     
+        if(key instanceof Float)
+        {
+            bTreeScore.addElement(student, (Float)key);
+        }
+        else if(key instanceof String)
+        {
+            bTreeName.addElement(student, (String)key);
+        }
     }
     
     public Student findStudent(E key)

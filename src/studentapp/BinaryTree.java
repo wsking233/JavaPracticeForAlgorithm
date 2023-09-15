@@ -5,7 +5,6 @@
  */
 package studentapp;
 
-import java.util.ArrayList;
 
 /**
  *
@@ -94,7 +93,6 @@ public class BinaryTree<E, F extends Comparable> {
         if (root != null) {
             toSortedList(root.right); // traversal the right node
             this.nodeList[this.number_of_nodes--] = root; // add the node to the array
-            this.number_of_nodes--; // decrease the number of nodes
             toSortedList(root.left); // traversal the left node
         }
     }
@@ -110,6 +108,7 @@ public class BinaryTree<E, F extends Comparable> {
         if (resultNode != null) { 
             return resultNode.element;  // if the node is found, then return the element of resultNode
         }
+        System.out.println("The node is not found.");
         return null; // if the node is not found, then return null
     }
 

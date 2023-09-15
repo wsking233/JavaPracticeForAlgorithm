@@ -19,6 +19,18 @@ public class Student {
     public String name;
     public Float score;
     public String comment;
+
+    public Student() {
+        this.name = null;
+        this.score = null;
+        this.comment = null;
+    }
+
+    public Student(Float score, String name, String comment) {
+        this.name = name;
+        this.score = score;
+        this.comment = comment;
+    }
     
     public String toString()
     {
