@@ -5,7 +5,6 @@
  */
 package studentapp;
 
-
 /**
  *
  * @author xhu
@@ -16,13 +15,17 @@ package studentapp;
 public class BinaryTree<E, F extends Comparable> {
     public Node<E, F> root; // root node
     public int number_of_nodes; // number of nodes in the tree
-    public Node<E, F>[] nodeList; // array to store all the nodes in the tree
+    public Node[] nodeList; // array to store all the nodes in the tree
+    private int index; // index for the nodeList array
+    private boolean isReversed; // check if the tree is reversed
 
     public BinaryTree() {
         // initialise the tree
         this.root = null;
         this.number_of_nodes = 0;
         this.nodeList = null;
+        this.index = 0;
+        this.isReversed = false;
     }
 
     public BinaryTree(Node<E, F> newNode) {
@@ -45,6 +48,7 @@ public class BinaryTree<E, F extends Comparable> {
         // use iteration to add node.
         if (currentRoot == null) {
             this.root = newNode; // if the root is null, then the node will be the root
+            this.number_of_nodes++; // increase the number of nodes
         } else {
             /*
              * if the root is not null, then compare the root with the node,
@@ -55,7 +59,7 @@ public class BinaryTree<E, F extends Comparable> {
              * 
              */
 
-            if (currentRoot.compareTo(newNode) < 0) {
+            if (newNode.compareTo(currentRoot) < 0) {
                 if (currentRoot.left == null) {
                     currentRoot.left = newNode;
                     this.number_of_nodes++; // increase the number of nodes
@@ -73,28 +77,34 @@ public class BinaryTree<E, F extends Comparable> {
         }
     }
 
-    public void traversal(Node<E, F> root) {
+    public void traversal(Node<E, F> currentRoot) {
         // in order traversal
-        if (root != null) {
-            traversal(root.left); // traversal the left node
-            System.out.println(root.element); // print the element
-            traversal(root.right); // traversal the right node
+        if (currentRoot != null) {
+            traversal(currentRoot.left); // traversal the left node
+            System.out.println(currentRoot.element); // print the element
+            traversal(currentRoot.right); // traversal the right node
         }
     }
 
-    public Node<E, F>[] toSortedList() {
-        this.nodeList = new Node[this.number_of_nodes]; // create a new array to store the nodes
-        toSortedList(root); // call the toSortedList method to store the nodes
+    public Node[] toSortedList() {
+        index = this.number_of_nodes; // set the index to the number of nodes
+        this.nodeList = new Node[index]; // create a new array to store the nodes
+        toSortedList(this.root); // call the recursion method
+        index = 0; // reset the index
         return this.nodeList; // return the array
     }
 
-    private void toSortedList(Node<E, F> root) {
+    private void toSortedList(Node<E, F> currentRoot) {
         // in order traversal
-        if (root != null) {
-            toSortedList(root.right); // traversal the right node
-            this.nodeList[this.number_of_nodes--] = root; // add the node to the array
-            toSortedList(root.left); // traversal the left node
+        if (currentRoot != null) {
+            toSortedList(currentRoot.right); // traversal the right node
+            this.nodeList[--index] = currentRoot; // add the node to the array
+            toSortedList(currentRoot.left); // traversal the left node
         }
+
+        // while(index <= this.number_of_nodes){
+        // this.nodeList[index]
+        // }
     }
 
     public E searchElement(F key) {
@@ -105,10 +115,10 @@ public class BinaryTree<E, F extends Comparable> {
 
         Node<E, F> resultNode = searchNode(this.root, targetNode); // call the searchNode method to find the node
 
-        if (resultNode != null) { 
-            return resultNode.element;  // if the node is found, then return the element of resultNode
+        if (resultNode != null) {
+            return resultNode.element; // if the node is found, then return the element of resultNode
         }
-        System.out.println("The node is not found.");
+        // System.out.println(key+" is not found.");
         return null; // if the node is not found, then return null
     }
 
@@ -125,15 +135,28 @@ public class BinaryTree<E, F extends Comparable> {
          * 
          */
 
-
-        if (currentRoot != null) {
-            if (currentRoot.compareTo(node) == 0) { // if the root is the node, then return the root
+        if (currentRoot != null) { // when the tree is not empty
+            // System.out.println("Searching .....");
+            if (node.compareTo(currentRoot) == 0) {
                 return currentRoot;
-            } else if (currentRoot.compareTo(node) < 0) { // if the root is smaller than the node, then go to the left node
-                return searchNode(currentRoot.left, node);
-            } else { // if the root is bigger than the node, then go to the right node
-                return searchNode(currentRoot.right, node);
+            }else{
+                if (isReversed) {   // if the tree is reversed, then change the direction
+                   if (node.compareTo(currentRoot) > 0) {
+                        return searchNode(currentRoot.left, node);
+                    } else {
+                        return searchNode(currentRoot.right, node);
+                    }
+                }else {
+                    if (node.compareTo(currentRoot) < 0) {
+                        return searchNode(currentRoot.left, node);
+                    } else {
+                        return searchNode(currentRoot.right, node);
+                    }
+    
+                }
             }
+
+
         }
 
         return null;
@@ -141,6 +164,8 @@ public class BinaryTree<E, F extends Comparable> {
 
     public void reverseOrder() {
         reverseOrder(this.root); // call the recursion method
+        this.isReversed = !isReversed; // change the status of the tree
+
     }
 
     private void reverseOrder(Node<E, F> root) {
@@ -162,7 +187,7 @@ public class BinaryTree<E, F extends Comparable> {
         Node<E, F> temp = root.left; // store the left node
         root.left = root.right; // right to left
         root.right = temp; // left to right
-
+        
 
         /*
          * the time complexity of this method is O(n),

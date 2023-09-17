@@ -12,7 +12,7 @@ package studentapp;
  * @student William Wang
  * @id 18017970
  */
-public class Node <E, F extends Comparable> implements Comparable <Node>{
+public class Node <E, F extends Comparable> implements Comparable<Node>{
 
     public E element;   //E type will only be student class in this case
     public F key;      
@@ -40,6 +40,7 @@ public class Node <E, F extends Comparable> implements Comparable <Node>{
         this.right = right;
     }
 
+    @Override
     public int compareTo(Node t){
 
         if(this.key == null){
@@ -51,20 +52,4 @@ public class Node <E, F extends Comparable> implements Comparable <Node>{
         }
         return this.key.compareTo(t.key);
     }
-
-
 }
-
-// @Override
-// public int compareTo(Node t) {
-//     if (this.key.compareTo(t.key) == 0) {
-//         //return 0; if equal
-//         return 0;
-//     } else if (this.key.compareTo(t.key) > 0) {
-//         //return 1; if this > t
-//         return 1;
-//     } else {
-//         //return -1; if this < t
-//         return -1;
-//     }
-// }
