@@ -6,29 +6,39 @@
 package noiseremoving;
 
 import java.io.File;
+
 import javax.swing.JFileChooser;
 
 /**
  *
  * @author xhu
+ * 
+ * @Studnet William Wang
+ * @StudentID 18017970
  */
 public class NoiseRemoving {
 
     /**
      * @param args the command line arguments
      */
+
     public static void main(String[] args) {
         // TODO code application logic here
-        JFileChooser imageFileChooser = new JFileChooser(new File("."));
-        int stateImageFileChooser = imageFileChooser.showOpenDialog(null);
-        
-        if(stateImageFileChooser == JFileChooser.APPROVE_OPTION)
-        {
-            String fileName = imageFileChooser.getSelectedFile().getPath();
-            ImageProcess ip = new ImageProcess(fileName);
-            ip.cleanNoise();
-            ip.save("noise_removed.jpg");
-        }
+        // JFileChooser imageFileChooser = new JFileChooser(new File("."));
+        // int stateImageFileChooser = imageFileChooser.showOpenDialog(null);
+
+        // if (stateImageFileChooser == JFileChooser.APPROVE_OPTION) {
+        // String fileName = imageFileChooser.getSelectedFile().getPath();
+        // ImageProcess ip = new ImageProcess(fileName);
+        // ip.cleanNoise();
+        // ip.save("noise_removed.jpg");
+        // // ip.save("noise_removed2.jpg");
+        // // ip.save("noise_removed3.jpg");
+
+        // }
+
+        App app = new App();
+
     }
-    
+
 }

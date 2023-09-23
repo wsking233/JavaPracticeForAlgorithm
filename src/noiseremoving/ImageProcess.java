@@ -16,6 +16,11 @@ import javax.imageio.ImageIO;
 /**
  *
  * @author xhu
+ *
+ * 
+ * @Studnet William Wang
+ * @StudentID 18017970
+ * 
  */
 public class ImageProcess {
     
@@ -192,16 +197,33 @@ public class ImageProcess {
                     }
                 
                 // please add your code here
-                // 1. create SortArray object
+                // 1. create SortArray object                
                 // 2. pass intensity_r[] to the SortArray object
                 // 3. call quickSort() from SortArray object
                 // 4. do steps 2 and 3 for intensity_g and intensity_b
-                
                 // start of your code (take as many lines as you need)
+       
+                // SortArray<Integer> sortArrayR = new SortArray<>(intensity_r);
+                // sortArrayR.quickSort(); // sort the array of R
                 
+                // SortArray<Integer> sortArrayG = new SortArray<>(intensity_g);
+                // sortArrayG.quickSort(); // sort the array of G
                 
-                // end of your code
+                // SortArray<Integer> sortArrayB = new SortArray<>(intensity_b);
+                // sortArrayB.quickSort(); // sort the array of B
+                
+                SortArray<Integer> sortArray = new SortArray<>(intensity_r);
+                sortArray.quickSort(); 
 
+                //set the array to intensity_g
+                sortArray.setArray(intensity_g);
+                sortArray.quickSort(); 
+                //set the array to intensity_B
+                sortArray.setArray(intensity_b);  
+                sortArray.quickSort();
+
+                // end of your code
+                
                 //index 4 hold median value of R, G and B
                 pixel[2] = intensity_b[4];      
                 pixel[1] = intensity_g[4];      
@@ -211,4 +233,5 @@ public class ImageProcess {
             }
         }
     }       
+
 }
