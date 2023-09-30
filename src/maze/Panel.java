@@ -73,7 +73,9 @@ public class Panel extends JPanel {
                 graph.addEdge(nodeName, neighbourB); // add the edges for the node
 
             }
+
         }
+
     }
 
     public void paint(Graphics g) {
@@ -97,10 +99,23 @@ public class Panel extends JPanel {
             // draw circles for the nodes, and put the node name in the circle
             for (Node node : graph.getNodes().values()) {
                 // System.out.println(node.getData() + " " + node.getX() + " " + node.getY());
+
+                // scale the x and y by 50, so the nodes will not overlap each other
+                // add 100 to x and y so the nodes will not be too close to the edge
                 g.setColor(Color.BLUE);
                 g.drawOval(node.getX() * 50 + 100, node.getY() * 50 + 100, 20, 20);
                 g.setColor(Color.BLACK);
                 g.drawString(node.getData(), node.getX() * 50 + 100, node.getY() * 50 + 100);
+
+                // draw the edges
+                // if(node.getNeighbours() != null){
+                // for (Node neighbour : node.getNeighbours()) {
+                // g.setColor(Color.YELLOW);
+                // g.drawLine(node.getX() * 50 + 110, node.getY() * 50 + 110,
+                // neighbour.getX() * 50 + 110,
+                // neighbour.getY() * 50 + 110);
+                // }
+                // }
             }
 
         } else {

@@ -37,20 +37,23 @@ public class Node {
     public void setY(int y) {
         this.y = y;
     }
-    
+
     public void setData(String data) {
         this.data = data;
     }
-    
+
     public String getData() {
         return this.data;
     }
-    
+
     public void addNeighbour(Node node) {
         this.neighbours.add(node);
     }
 
     public List<Node> getNeighbours() {
+        if (this.neighbours == null) {
+            return null;
+        }
         return this.neighbours;
     }
 

@@ -27,10 +27,6 @@ public class MazeApp {
      * @param args the command line arguments
      */
 
-
-     
-
-
     public static void main(String[] args) {
         // TODO code application logic here
         JFrame frame = new JFrame("Maze");
@@ -38,7 +34,7 @@ public class MazeApp {
         frame.setLocationRelativeTo(null);
         Panel panel = new Panel();
 
-        //---------------------------------------------
+        // ---------------------------------------------
         // create the menu bar to open file
         JMenuItem openFile = new JMenuItem("Open");
         JMenu menu = new JMenu("File");
@@ -47,7 +43,7 @@ public class MazeApp {
         JFileChooser fileChooser = new JFileChooser();
 
         menu.add(openFile); // add the open file button to the menu
-        menuBar.add(menu);  // add the menu to the menu bar
+        menuBar.add(menu); // add the menu to the menu bar
         frame.setJMenuBar(menuBar); // add the menu bar to the frame
 
         // add action listener to the open file button
@@ -55,7 +51,7 @@ public class MazeApp {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int stateImageFileChooser = fileChooser.showOpenDialog(frame);
-                if(stateImageFileChooser == fileChooser.APPROVE_OPTION){
+                if (stateImageFileChooser == fileChooser.APPROVE_OPTION) {
                     File selectedFile = fileChooser.getSelectedFile();
                     panel.initFileManager(selectedFile.getAbsolutePath());
                     panel.repaint();
@@ -63,11 +59,11 @@ public class MazeApp {
             }
         });
 
-        //---------------------------------------------
+        // ---------------------------------------------
         frame.add(panel);
         frame.setSize(700, 600);
         frame.setVisible(true);
 
     }
-    
+
 }
