@@ -68,7 +68,7 @@ public class Panel extends JPanel {
                     graph.getNode(nodeName).setX(x);
                     graph.getNode(nodeName).setY(y);
                 }
-                
+
                 graph.addEdge(nodeName, neighbourA); // add the edges for the node
                 graph.addEdge(nodeName, neighbourB); // add the edges for the node
 
@@ -96,11 +96,11 @@ public class Panel extends JPanel {
 
             // draw circles for the nodes, and put the node name in the circle
             for (Node node : graph.getNodes().values()) {
-                System.out.println(node.getData() + " " + node.getX() + " " + node.getY());
+                // System.out.println(node.getData() + " " + node.getX() + " " + node.getY());
                 g.setColor(Color.BLUE);
-                g.drawOval(node.getX() * 10, node.getY() * 10, 20, 20);
+                g.drawOval(node.getX() * 50 + 100, node.getY() * 50 + 100, 20, 20);
                 g.setColor(Color.BLACK);
-                g.drawString(node.getData(), node.getX() * 10, node.getY() * 10);
+                g.drawString(node.getData(), node.getX() * 50 + 100, node.getY() * 50 + 100);
             }
 
         } else {

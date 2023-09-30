@@ -40,7 +40,7 @@ public class Graph{
 
         if(fromNode != null || toNode != null){
             fromNode.addNeighbour(toNode);
-            toNode.addNeighbour(fromNode);
+            // toNode.addNeighbour(fromNode);
         }
     }
 
