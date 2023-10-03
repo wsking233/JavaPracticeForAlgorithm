@@ -5,6 +5,7 @@
  */
 package maze;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -33,7 +34,7 @@ public class MazeApp {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         Panel panel = new Panel();
-
+        // panel.setBackground(Color.DARK_GRAY);
         // ---------------------------------------------
         // create the menu bar to open file
         JMenuItem openFile = new JMenuItem("Open");
@@ -53,7 +54,7 @@ public class MazeApp {
                 int stateImageFileChooser = fileChooser.showOpenDialog(frame);
                 if (stateImageFileChooser == fileChooser.APPROVE_OPTION) {
                     File selectedFile = fileChooser.getSelectedFile();
-                    panel.initFileManager(selectedFile.getAbsolutePath());
+                    panel.restCanvas(selectedFile.getAbsolutePath());
                     panel.repaint();
                 }
             }
@@ -61,7 +62,7 @@ public class MazeApp {
 
         // ---------------------------------------------
         frame.add(panel);
-        frame.setSize(700, 600);
+        frame.setSize(700, 700);
         frame.setVisible(true);
 
     }

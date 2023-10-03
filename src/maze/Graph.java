@@ -38,9 +38,9 @@ public class Graph {
         Node fromNode = nodes.get(from);
         Node toNode = nodes.get(to);
 
-        if (fromNode != null || toNode != null) {
+        if (fromNode != null && toNode != null) {
             fromNode.addNeighbour(toNode);
-            // toNode.addNeighbour(fromNode);
+            toNode.addNeighbour(fromNode);
         }
     }
 
